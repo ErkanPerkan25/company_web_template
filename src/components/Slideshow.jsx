@@ -6,7 +6,7 @@ function Slideshow(){
 
     return(
         <div>
-            <div>
+            <div className="">
                 {pictures.map(img =>(
                     <Slide 
                         url={img.url}

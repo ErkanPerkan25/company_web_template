@@ -1,14 +1,14 @@
 export default [
     {
         url: "assets/planing.jpg",
-        caption: ""
+        caption: "planing"
     },
     {
         url: "assets/working_place.jpg",
-        caption: ""
+        caption: "working_place"
     },
     {
         url: "assets/thinking.jpg",
-        caption: ""
+        caption: "thinking"
     },
 ]
