@@ -1,14 +1,16 @@
 import { useState } from 'react'
+import {BrowserRouter, Routes, Route} from "react-router-dom"
 import Navbar from "./components/Navbar.jsx" 
-import Slideshow from "./components/Slideshow.jsx" 
+import Footer from "./components/Footer.jsx"
 import './tailwindcss.css'
 
 function App() {
 
     return (
         <>
+
             <Navbar />
-            <Slideshow />
+            <Footer />
         </>
     )
 }

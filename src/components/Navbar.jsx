@@ -2,13 +2,13 @@ import {useState} from "react"
 
 function Navbar(){
     return(
-        <div className="h-20 bg-stone-500 flex flex-row gap-50 items-center">
-            <h1 className="basis-64 text-3xl text-center">Company Name</h1>
-            <ul className="basis-225 flex flex-row gap-25 justify-center text-center px-2">
-                <a className="my-2"><li>Home</li></a>
-                <a className="my-2"><li>About Us</li></a>
-                <a className="my-2"><li>More</li></a>
-                <a className="my-2"><li>Contact Us</li></a>
+        <div className="h-20 bg-stone-500 flex flex-row items-center">
+            <h1 className="ml-20 text-3xl text-center">Company Name</h1>
+            <ul className="ml-150 flex flex-row justify-center text-center">
+                <li className="p-6"><a>Home</a></li>
+                <li className="p-6"><a>About Us</a></li>
+                <li className="p-6"><a>Our Mission</a></li>
+                <li className="p-6"><a>Contact Us</a></li>
             </ul>
         </div>
     )
