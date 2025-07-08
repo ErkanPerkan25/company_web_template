@@ -1,17 +1,17 @@
 import { useState } from 'react'
+import ReactDOM from "react-dom/client"
 import {BrowserRouter, Routes, Route} from "react-router-dom"
-import Navbar from "./components/Navbar.jsx" 
-import Footer from "./components/Footer.jsx"
+import Home from "./pages/Home"
 import './tailwindcss.css'
 
 function App() {
 
     return (
-        <>
-
-            <Navbar />
-            <Footer />
-        </>
+        <BrowserRouter>
+            <Routes>
+                <Route path="/" element={<Home />} />
+            </Routes>
+        </BrowserRouter>
     )
 }
 
