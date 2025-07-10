@@ -5,7 +5,7 @@ import VideoShow from "../components/VideoShow"
 
 function Home(){
     return(
-        <div>
+        <div className="">
             <Navbar />
             <VideoShow />
             <Footer />
