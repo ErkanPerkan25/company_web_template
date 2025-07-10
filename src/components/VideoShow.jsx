@@ -5,7 +5,7 @@ function VideoShow(){
         <div className="">
             <h1></h1>
             <div className="relative">
-                <video  className="w-full h-150 brightness-50 object-cover object-center" autoPlay muted>
+                <video  className="w-full h-150 brightness-50 object-cover object-center" autoPlay loop muted>
                     <source className="" src="assets/fishing_reel.mp4" type="video/mp4" />
                     <p>
                         Your broswer does not support the HTML video. Here is a link

@@ -6,7 +6,7 @@ function Footer(){
             <div className="py-0 px-20">
                 <div className="flex flex-col md:flex-row justify-center">
                     <div className="mr-80">
-                        <h1 className="font-bold text-3xl text-center">Company Name</h1> 
+                        <h1 className="font-bold text-3xl text-center">Fishing Nerds</h1> 
                         <p className="italic text-center mt-4">Company Location</p>
                         <div className="justify-center text-center mt-10">
                             <a href="#" className="fa fa-facebook w-12 h-12 bg-blue-600 p-4 mx-2 my-2 rounded-full text-white text-center"> </a>
@@ -22,7 +22,7 @@ function Footer(){
                         </ul>
                     </div>
                     <div className="ml-30">
-                        <h1 className="text-xl text-center">Something</h1>
+                        <h1 className="text-xl text-center">Mission</h1>
                         <ul className="text-center">
                             <li></li>
                             <li></li>
