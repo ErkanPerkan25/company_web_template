@@ -1,6 +1,6 @@
 export default [
     {
-        title: "Roods",
+        title: "Rods",
         url: "assets/roods.jpg"
     },
     {

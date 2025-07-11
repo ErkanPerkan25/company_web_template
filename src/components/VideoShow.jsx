@@ -14,11 +14,11 @@ function VideoShow(){
                 </video>
                 <div className="absolute top-40 right-100 size-64 text-white">
                         <h1 className="text-7xl font-bold">
-                            FISH
-                            <br />
                             EAT
                             <br />
                             SLEEP
+                            <br />
+                            FISH
                             <br />
                             REPEAT
                         </h1>
