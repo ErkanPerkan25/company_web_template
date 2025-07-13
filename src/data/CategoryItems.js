@@ -1,14 +1,14 @@
 export default [
     {
-        title: "Rods",
+        title: "Fishing Rods",
         url: "assets/roods.jpg"
     },
     {
-        title: "Reels",
+        title: "Fishing Reels",
         url: "assets/reel.jpg"
     },
     {
-        title: "Baits",
+        title: "Lures",
         url: "assets/baits.jpg"
     },
     {
