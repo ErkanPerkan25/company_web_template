@@ -11,7 +11,7 @@ function Navbar(){
                 <li className="p-6"><Link to="/products">Products</Link></li>
                 <li className="p-6"><Link>About Us</Link></li>
                 <li className="p-6"><Link>Our Mission</Link></li>
-                <li className="p-6"><Link>Contact Us</Link></li>
+                <li className="p-6"><Link to="/contact">Contact Us</Link></li>
             </ul>
             <div className="ml-80">
                 <a href="#" className="fa fa-search w-12 h-12 p-4 mx-2 my-2 rounded-full text-white text-center"> </a>
