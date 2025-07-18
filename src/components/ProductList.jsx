@@ -2,8 +2,35 @@ import {useState} from "react"
 import Reels from "../data/FishingReelItems"
 import ProductItem from "./ProductItem";
 import ProductFilter from "./ProductFilter";
+import { apiUrl } from "../api/apiConfig";
 
 function ProductList(){
+    const[products, setProducts] = useState(Array);
+    
+    // Fetching product data
+    fetch(apiUrl)
+        .then(res =>{
+            if(!res.ok){
+                throw new Error(`Network response not ok`);
+            }
+            else{
+                return res.json();
+            }
+        })
+        .then(data =>{
+            //console.log(data);
+            for(let i=0; i < data.length; i++){
+                setProducts[i] = data[i];
+            }
+        })
+        .catch(error =>{
+            console.log("Error: " + error);
+        });
+    
+    for(let i=0; i < products.length; i++){
+        console.log(products[i]);
+    }
+
     return(
         <div className="flex flex-col pt-5">
             <h1 className="text-5xl text-center font-bold m-5">Products</h1>
