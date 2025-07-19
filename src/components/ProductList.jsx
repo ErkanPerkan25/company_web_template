@@ -1,36 +1,37 @@
-import {useState} from "react"
-import Reels from "../data/FishingReelItems"
+import {useCallback, useEffect, useState} from "react"
 import ProductItem from "./ProductItem";
 import ProductFilter from "./ProductFilter";
 import { apiUrl } from "../api/apiConfig";
 
 function ProductList(){
-    const[products, setProducts] = useState(Array);
-    
-    // Fetching product data
-    fetch(apiUrl)
-        .then(res =>{
-            if(!res.ok){
-                throw new Error(`Network response not ok`);
-            }
-            else{
-                return res.json();
-            }
-        })
-        .then(data =>{
-            //console.log(data);
-            for(let i=0; i < data.length; i++){
-                setProducts[i] = data[i];
-            }
-        })
-        .catch(error =>{
-            console.log("Error: " + error);
-        });
-    
-    for(let i=0; i < products.length; i++){
-        console.log(products[i]);
-    }
+    const[products, setProducts] = useState([]);
+    const[inStock, setInStack] = useState(Boolean);
 
+    const getProducts = useCallback(() =>{
+        // Fetching product data
+        fetch(`${apiUrl}/products`)
+            .then(res =>{
+                if(!res.ok){
+                    throw new Error(`Network response not ok`);
+                }
+                else{
+                    return res.json();
+                }
+            })
+            .then(data =>{
+                //console.log(data);
+                setProducts(data);
+                //console.log(products);
+            })
+            .catch(error =>{
+                console.log("Error: " + error);
+            });
+    }, []);
+
+    useEffect(() =>{
+        getProducts();
+    }, [getProducts]);
+    
     return(
         <div className="flex flex-col pt-5">
             <h1 className="text-5xl text-center font-bold m-5">Products</h1>
@@ -39,12 +40,12 @@ function ProductList(){
                     <ProductFilter />
                 </div>
                 <div className="grid grid-cols-3 gap-4">
-                    {Reels.map((index,key) =>(
+                    {products.map((index,key) =>(
                         <ProductItem
                             key={key}
-                            title={index.title}
-                            cost={index.cost}
-                            url={index.url}
+                            name={index.Name}
+                            price={index.Price}
+                            url={index.Image_url}
                         />
                     ))}
                 </div>
