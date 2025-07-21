@@ -3,7 +3,17 @@ import { apiUrl } from "../api/apiConfig";
 
 function SpecificProduct({name}){
     const [product, setProduct] = useState();
-    const [count, setCount] = useState(1);
+    const [quantity, setQuantity] = useState(1);
+
+    const handleQuantity = (e) =>{
+        if(e.target.value === "+"){
+            setQuantity(quantity + 1);
+        }
+        else{
+            setQuantity(quantity - 1);
+        }
+    }
+
 
     const getItem = useCallback(() =>{
         // Fetching product data
@@ -30,6 +40,7 @@ function SpecificProduct({name}){
 
     console.log(product);
 
+
     // Waiting phase for loading data from API call, need better fix here
     if(!product){
         return (
@@ -51,18 +62,27 @@ function SpecificProduct({name}){
                 <h1 className="text-4xl font-bold">{product.Name}</h1>
                 <h3 className="text-3xl ">${product.Price}</h3>
 
-                <button className="w-8 h-8 border-1 rounded-md">
+                <button 
+                    onClick={handleQuantity}
+                    value="-"
+                    className="w-8 h-8 border-1 rounded-md"
+                >
                     -
                 </button>
                 <input type="text" 
+                    id="quantity"
+                    maxLength={3}
                     pattern="[0-9]{3}" 
                     defaultValue={1}
                     className="w-10 h-10 border-1 rounded-md text-center"
                 >
                 </input>
                 <button 
-                    className="w-8 h-8 border-1 rounded-md">
-                    +
+                    className="w-8 h-8 border-1 rounded-md"
+                    onClick={handleQuantity}
+                    value="+"
+                >
+                +
                 </button>
                 <br/>
                 <button className="w-20 h-10 rounded-md mr-10 text-white bg-linear-to-r from-cyan-500 to-sky-600 drop-shadow-md hover:stroke-white">
