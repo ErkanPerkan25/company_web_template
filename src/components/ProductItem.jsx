@@ -18,7 +18,7 @@ function ProductItem({name, price, url}){
                 <h1 className="text-lg">{name}<br/></h1>
                 <h3 className="text-lg font-bold">${price}</h3>
                 <button 
-                    className="w-15 h-8 bg-cyan-600 text-white font-bold"
+                    className="w-15 h-8 rounded-md text-white bg-linear-to-r from-cyan-500 to-sky-600 drop-shadow-md hover:stroke-white"
                 >
                 BUY 
                 </button>
