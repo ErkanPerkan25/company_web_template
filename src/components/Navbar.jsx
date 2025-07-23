@@ -16,7 +16,11 @@ function Navbar(){
             <div className="ml-80">
                 <a href="#" className="fa fa-search w-12 h-12 p-4 mx-2 my-2 rounded-full text-white text-center"> </a>
                 <a href="#" className="fa fa-user w-12 h-12 p-4 mx-2 my-2 rounded-full text-white text-center"> </a>
-                <a href="#" className="fa fa-shopping-cart w-12 h-12 p-4 mx-2 my-2 rounded-full text-white text-center"> </a>
+                <a href="#" className="fa fa-shopping-cart w-12 h-12 p-4 mx-2 my-2 rounded-full text-white text-center relative">
+                    <span className="w-5 h-5 p-0.5 font-bold rounded-full absolute bg-amber-400 top-2">
+                        0
+                    </span>
+                </a>
             </div>
         </div>
     )

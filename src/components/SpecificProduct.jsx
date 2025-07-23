@@ -5,12 +5,26 @@ function SpecificProduct({name}){
     const [product, setProduct] = useState();
     const [quantity, setQuantity] = useState(1);
 
+    // Handles quantity number
     const handleQuantity = (e) =>{
-        if(e.target.value === "+"){
-            setQuantity(quantity + 1);
+        if(quantity == 1){
+            if(e.target.value === "+"){
+                setQuantity(quantity + 1);
+            }
         }
         else{
-            setQuantity(quantity - 1);
+            if(e.target.value === "+"){
+                setQuantity(quantity + 1);
+            }
+            else{
+                setQuantity(quantity - 1);
+            }
+        }
+    }
+
+    const onQuantityChange = (e) =>{
+        if(isNaN(e.target.value)){
+            setQuantity(1);
         }
     }
 
@@ -58,34 +72,38 @@ function SpecificProduct({name}){
                 />
             </div>
 
-            <div className="w-85 h-125 mt-15 p-4 border-2 rounded-lg">
+            <div className="w-85 h-125 flex flex-col mt-auto mb-auto ml-20 p-4 border-2 rounded-lg">
                 <h1 className="text-4xl font-bold">{product.Name}</h1>
                 <h3 className="text-3xl ">${product.Price}</h3>
 
-                <button 
-                    onClick={handleQuantity}
-                    value="-"
-                    className="w-8 h-8 border-1 rounded-md"
-                >
-                    -
-                </button>
-                <input type="text" 
-                    id="quantity"
-                    maxLength={3}
-                    pattern="[0-9]{3}" 
-                    defaultValue={1}
-                    className="w-10 h-10 border-1 rounded-md text-center"
-                >
-                </input>
-                <button 
-                    className="w-8 h-8 border-1 rounded-md"
-                    onClick={handleQuantity}
-                    value="+"
-                >
-                +
-                </button>
-                <br/>
-                <button className="w-20 h-10 rounded-md mr-10 text-white bg-linear-to-r from-cyan-500 to-sky-600 drop-shadow-md hover:stroke-white">
+                <div>
+                </div>
+
+                <div className="m-2 ml-auto mr-auto">
+                    <button 
+                        onClick={handleQuantity}
+                        value="-"
+                        className="w-8 h-8 border-1 rounded-md"
+                    >
+                        -
+                    </button>
+                    <input type="text" 
+                        maxLength={3}
+                        pattern="[0-9]{3}" 
+                        value={quantity}
+                        onChange={onQuantityChange}
+                        className="w-10 h-10 m-2 border-1 rounded-md text-center"
+                    >
+                    </input>
+                    <button 
+                        className="w-8 h-8 border-1  rounded-md"
+                        onClick={handleQuantity}
+                        value="+"
+                    >
+                    +
+                    </button>
+                </div>
+                <button className="w-40 h-10 rounded-md ml-auto mr-auto mt-5 text-white font-bold bg-linear-to-r from-cyan-500 to-sky-600 drop-shadow-md hover:stroke-white">
                     BUY
                 </button>
             </div>
