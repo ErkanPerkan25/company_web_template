@@ -63,10 +63,10 @@ function SpecificProduct({name}){
     }
 
     return(
-        <div className="flex flex-col md:flex-row m-10 border-2 justify-center">
-            <div className="w-150 mr-50">
+        <div className="flex flex-col md:flex-row m-10 justify-center">
+            <div className="w-200 mr-30 border-2 rounded-lg p-10">
                 <img 
-                    className=""
+                    className="w-125 mr-auto ml-auto"
                     src="/assets/vecteezy_big-bass-fish.png" 
                     alt="Vecteezy.com" 
                 />
