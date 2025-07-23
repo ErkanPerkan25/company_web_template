@@ -4,15 +4,15 @@ import { apiUrl } from "../api/apiConfig";
 
 function ProductList(){
     const[products, setProducts] = useState([]);
-    const[type, setType] = useState([]);
-    const[brand, setBrand] = useState([]);
+    const[type, setType] = useState(Array);
+    const[brand, setBrand] = useState(Array);
 
     const[isInStockChecked, setInStockChecked] = useState(false);
     const[isOnSaleChecked, setOnSaleChecked] = useState(false);
 
     const getProducts = useCallback(() =>{
         // Fetching product data
-        fetch(`${apiUrl}/products?type=${type}`)
+        fetch(`${apiUrl}/products?type=${type}&brand=${brand}`)
             .then(res =>{
                 if(!res.ok){
                     throw new Error(`Network response not ok`);
@@ -41,6 +41,33 @@ function ProductList(){
     }, [brand, type, getProducts]);
 
     const handleCheckedItem = (e) =>{
+        if(e.target.checked){
+            if(e.target.id === "typeCheck")
+                setType(type.concat(e.target.value));
+
+            if(e.target.id === "brandCheck")
+                setBrand(brand.concat(e.target.value));
+        }
+
+        if(!e.target.checked){
+            if(e.target.id === "typeCheck"){
+                let array = [...type];
+                let index = type.indexOf(e.target.value);
+                if(index !== -1){
+                    array.splice(index,1);
+                    setType(array);
+                }
+            }
+
+            if(e.target.id === "brandCheck"){
+                let array = [...brand];
+                let index = brand.indexOf(e.target.value);
+                if(index !== -1){
+                    array.splice(index,1);
+                    setBrand(array);
+                }
+            }
+        }
     }
     
     return(
@@ -91,12 +118,12 @@ function ProductList(){
 
                                     <div className="flex flex-col">
                                         <div className="m-1">
-                                            <input className="mr-2" type="checkbox" value={"reel"} onChange={(e) => (setType(e.target.value))}/>
+                                            <input className="mr-2" id="typeCheck" type="checkbox" value={"reel"} onChange={handleCheckedItem}/>
                                             <label>Reel</label>
                                         </div>
 
                                         <div className="m-1">
-                                            <input className="mr-2" type="checkbox" value={"rod"} onChange={(e) => (setType(e.target.value))}/>
+                                            <input className="mr-2" id="typeCheck" type="checkbox" value={"rod"} onChange={handleCheckedItem}/>
                                             <label>Rod</label>
                                         </div>
 
@@ -109,12 +136,12 @@ function ProductList(){
                                     <summary className="">Brand</summary>
                                     <div className="flex flex-col">
                                         <div className="m-1">
-                                            <input className="mr-2" type="checkbox" />
+                                            <input className="mr-2" id="brandCheck" type="checkbox"  value={"Sheehs"} onChange={handleCheckedItem}/>
                                             <label>Sheehs</label>
                                         </div>
 
                                         <div className="m-1">
-                                            <input className="mr-2" type="checkbox"/>
+                                            <input className="mr-2" id="brandCheck" type="checkbox" value={"Wow"} onChange={handleCheckedItem}/>
                                             <label>Wow</label>
                                         </div>
 
