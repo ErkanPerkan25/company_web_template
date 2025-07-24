@@ -12,7 +12,8 @@ function ProductList(){
 
     const getProducts = useCallback(() =>{
         // Fetching product data
-        fetch(`${apiUrl}/products?type=${type}&brand=${brand}`)
+        const qType = type.toString();
+        fetch(`${apiUrl}/products?type=${qType}&brand=${brand}`)
             .then(res =>{
                 if(!res.ok){
                     throw new Error(`Network response not ok`);
@@ -40,6 +41,7 @@ function ProductList(){
         }
     }, [brand, type, getProducts]);
 
+
     const handleCheckedItem = (e) =>{
         if(e.target.checked){
             if(e.target.id === "typeCheck")
@@ -58,8 +60,7 @@ function ProductList(){
                     setType(array);
                 }
             }
-
-            if(e.target.id === "brandCheck"){
+            else if(e.target.id === "brandCheck"){
                 let array = [...brand];
                 let index = brand.indexOf(e.target.value);
                 if(index !== -1){
