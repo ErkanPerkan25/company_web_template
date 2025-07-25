@@ -5,12 +5,12 @@ function ProductItem({name, price, url}){
 
     return(
         <div className="w-80 hover:shadow-xl">
-            <div className="w-70 h-60 p-2">
+            <div className="w-70 h-60 p-2 ml-auto mr-auto">
                 <Link to={`/products/${name}`}>
                     <img 
                         className="mt-5 h-55 ml-auto mr-auto"
-                        src={url} 
-                        alt=""
+                        src="/assets/vecteezy_big-bass-fish.png" 
+                        alt="Vecteezy.com"
                     />
                 </Link>
             </div>

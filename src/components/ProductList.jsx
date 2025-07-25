@@ -6,7 +6,7 @@ function ProductList(){
     const[products, setProducts] = useState([]);
     const[type, setType] = useState(Array);
     const[brand, setBrand] = useState(Array);
-    const[priceRange, setPriceRange] = useState();
+    const[priceRange, setPriceRange] = useState(Array);
 
     const[isInStockChecked, setInStockChecked] = useState(false);
     const[isOnSaleChecked, setOnSaleChecked] = useState(false);
@@ -14,7 +14,7 @@ function ProductList(){
     const getProducts = useCallback(() =>{
         // Fetching product data
         const qType = type.toString();
-        fetch(`${apiUrl}/products?type=${qType}&brand=${brand}&price=${}`)
+        fetch(`${apiUrl}/products?type=${qType}&brand=${brand}&price=${priceRange}`)
             .then(res =>{
                 if(!res.ok){
                     throw new Error(`Network response not ok`);
@@ -50,6 +50,9 @@ function ProductList(){
 
             if(e.target.id === "brandCheck")
                 setBrand(brand.concat(e.target.value));
+
+            if(e.target.id === "priceCheck")
+                setPriceRange(priceRange.concat(e.target.value));
         }
 
         if(!e.target.checked){
@@ -67,6 +70,14 @@ function ProductList(){
                 if(index !== -1){
                     array.splice(index,1);
                     setBrand(array);
+                }
+            }
+            else if(e.target.id === "priceCheck"){
+                let array = [...priceRange];
+                let index = priceRange.indexOf(e.target.value);
+                if(index !== -1){
+                    array.splice(index,1);
+                    setPriceRange(array);
                 }
             }
         }
@@ -128,7 +139,16 @@ function ProductList(){
                                             <input className="mr-2" id="typeCheck" type="checkbox" value={"rod"} onChange={handleCheckedItem}/>
                                             <label>Rod</label>
                                         </div>
+                                        
+                                        <div className="m-1">
+                                            <input className="mr-2" id="typeCheck" type="checkbox" value={"lure"} onChange={handleCheckedItem}/>
+                                            <label>Lures</label>
+                                        </div>
 
+                                        <div className="m-1">
+                                            <input className="mr-2" id="typeCheck" type="checkbox" value={"accessorie"} onChange={handleCheckedItem}/>
+                                            <label>Accessories</label>
+                                        </div>
                                     </div>
                                 </details>
                             </div>
@@ -155,16 +175,7 @@ function ProductList(){
                                 <details open className="not-sr-only m-1">
                                     <summary className="">Price</summary>
                                     <div className="flex flex-col">
-                                        <div className="m-1">
-                                            <input className="mr-2" id="priceCheck" type="checkbox"  value={range(0,100)} onChange={handleCheckedItem}/>
-                                            <label>Under $100</label>
-                                        </div>
-
-                                        <div className="m-1">
-                                            <input className="mr-2" id="priceCheck" type="checkbox" value={range(100,200)} onChange={handleCheckedItem}/>
-                                            <label>Between $100 and $200</label>
-                                        </div>
-
+                                        <input type="range" min={0} max={500} />
                                     </div>
                                 </details>
                             </div>
