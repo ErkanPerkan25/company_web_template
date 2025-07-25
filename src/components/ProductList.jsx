@@ -6,6 +6,7 @@ function ProductList(){
     const[products, setProducts] = useState([]);
     const[type, setType] = useState(Array);
     const[brand, setBrand] = useState(Array);
+    const[priceRange, setPriceRange] = useState();
 
     const[isInStockChecked, setInStockChecked] = useState(false);
     const[isOnSaleChecked, setOnSaleChecked] = useState(false);
@@ -13,7 +14,7 @@ function ProductList(){
     const getProducts = useCallback(() =>{
         // Fetching product data
         const qType = type.toString();
-        fetch(`${apiUrl}/products?type=${qType}&brand=${brand}`)
+        fetch(`${apiUrl}/products?type=${qType}&brand=${brand}&price=${}`)
             .then(res =>{
                 if(!res.ok){
                     throw new Error(`Network response not ok`);
@@ -30,7 +31,7 @@ function ProductList(){
             .catch(error =>{
                 console.log("Error: " + error);
             });
-    }, [type]);
+    }, [type, brand]);
 
     useEffect(() =>{
         if(type || brand){
@@ -150,6 +151,23 @@ function ProductList(){
                                 </details>
                             </div>
 
+                            <div>
+                                <details open className="not-sr-only m-1">
+                                    <summary className="">Price</summary>
+                                    <div className="flex flex-col">
+                                        <div className="m-1">
+                                            <input className="mr-2" id="priceCheck" type="checkbox"  value={range(0,100)} onChange={handleCheckedItem}/>
+                                            <label>Under $100</label>
+                                        </div>
+
+                                        <div className="m-1">
+                                            <input className="mr-2" id="priceCheck" type="checkbox" value={range(100,200)} onChange={handleCheckedItem}/>
+                                            <label>Between $100 and $200</label>
+                                        </div>
+
+                                    </div>
+                                </details>
+                            </div>
                         </div>
                     </div>
                 </div>
