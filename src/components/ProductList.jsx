@@ -9,12 +9,12 @@ function ProductList(){
     const[priceRange, setPriceRange] = useState(Array);
 
     const[isInStockChecked, setInStockChecked] = useState(false);
-    const[isOnSaleChecked, setOnSaleChecked] = useState(false);
+    //const[isOnSaleChecked, setOnSaleChecked] = useState(false);
 
     const getProducts = useCallback(() =>{
         // Fetching product data
         const qType = type.toString();
-        fetch(`${apiUrl}/products?type=${qType}&brand=${brand}&price=${priceRange}`)
+        fetch(`${apiUrl}/products?type=${qType}&brand=${brand}&inStock=${isInStockChecked}`)
             .then(res =>{
                 if(!res.ok){
                     throw new Error(`Network response not ok`);
@@ -24,23 +24,17 @@ function ProductList(){
                 }
             })
             .then(data =>{
-                //console.log(data);
+                console.log(data);
                 setProducts(data);
-                //console.log(products);
             })
             .catch(error =>{
                 console.log("Error: " + error);
             });
-    }, [type, brand]);
+    }, [type, brand, isInStockChecked]);
 
     useEffect(() =>{
-        if(type || brand){
-            getProducts();
-        }
-        else{
-            getProducts();
-        }
-    }, [brand, type, getProducts]);
+        getProducts();
+    }, [getProducts]);
 
 
     const handleCheckedItem = (e) =>{
@@ -53,6 +47,9 @@ function ProductList(){
 
             if(e.target.id === "priceCheck")
                 setPriceRange(priceRange.concat(e.target.value));
+
+            if(e.target.id === "stockCheck")
+                setInStockChecked(true);
         }
 
         if(!e.target.checked){
@@ -79,6 +76,9 @@ function ProductList(){
                     array.splice(index,1);
                     setPriceRange(array);
                 }
+            }
+            else if(e.target.id === "stockCheck"){
+                setInStockChecked(false);
             }
         }
     }
@@ -112,7 +112,7 @@ function ProductList(){
                                     <summary className="">Availability</summary>
                                     <div className="flex flex-col">
                                         <div className="m-1">
-                                            <input className="mr-2" type="checkbox"/>
+                                            <input className="mr-2" id="stockCheck" type="checkbox" onChange={handleCheckedItem}/>
                                             <label>In Stock</label>
                                         </div>
 
