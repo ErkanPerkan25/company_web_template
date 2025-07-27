@@ -1,20 +1,20 @@
 import {useCallback, useEffect, useState} from "react"
 import ProductItem from "./ProductItem";
 import { apiUrl } from "../api/apiConfig";
+import { useParams } from "react-router-dom";
 
 function ProductList(){
     const[products, setProducts] = useState([]);
     const[type, setType] = useState(Array);
-    const[brand, setBrand] = useState(Array);
     const[priceRange, setPriceRange] = useState(Array);
 
     const[isInStockChecked, setInStockChecked] = useState(false);
     //const[isOnSaleChecked, setOnSaleChecked] = useState(false);
+    const params = useParams();
 
     const getProducts = useCallback(() =>{
         // Fetching product data
-        const qType = type.toString();
-        fetch(`${apiUrl}/products?type=${qType}&brand=${brand}&inStock=${isInStockChecked}`)
+        fetch(`${apiUrl}/products/${params.category}`)
             .then(res =>{
                 if(!res.ok){
                     throw new Error(`Network response not ok`);
@@ -30,7 +30,7 @@ function ProductList(){
             .catch(error =>{
                 console.log("Error: " + error);
             });
-    }, [type, brand, isInStockChecked]);
+    }, [params]);
 
     useEffect(() =>{
         getProducts();
@@ -41,9 +41,6 @@ function ProductList(){
         if(e.target.checked){
             if(e.target.id === "typeCheck")
                 setType(type.concat(e.target.value));
-
-            if(e.target.id === "brandCheck")
-                setBrand(brand.concat(e.target.value));
 
             if(e.target.id === "priceCheck")
                 setPriceRange(priceRange.concat(e.target.value));
@@ -59,14 +56,6 @@ function ProductList(){
                 if(index !== -1){
                     array.splice(index,1);
                     setType(array);
-                }
-            }
-            else if(e.target.id === "brandCheck"){
-                let array = [...brand];
-                let index = brand.indexOf(e.target.value);
-                if(index !== -1){
-                    array.splice(index,1);
-                    setBrand(array);
                 }
             }
             else if(e.target.id === "priceCheck"){
@@ -149,24 +138,6 @@ function ProductList(){
                                             <input className="mr-2" id="typeCheck" type="checkbox" value={"accessorie"} onChange={handleCheckedItem}/>
                                             <label>Accessories</label>
                                         </div>
-                                    </div>
-                                </details>
-                            </div>
-
-                            <div>
-                                <details open className="not-sr-only m-1">
-                                    <summary className="">Brand</summary>
-                                    <div className="flex flex-col">
-                                        <div className="m-1">
-                                            <input className="mr-2" id="brandCheck" type="checkbox"  value={"Sheehs"} onChange={handleCheckedItem}/>
-                                            <label>Sheehs</label>
-                                        </div>
-
-                                        <div className="m-1">
-                                            <input className="mr-2" id="brandCheck" type="checkbox" value={"Wow"} onChange={handleCheckedItem}/>
-                                            <label>Wow</label>
-                                        </div>
-
                                     </div>
                                 </details>
                             </div>

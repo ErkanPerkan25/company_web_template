@@ -5,7 +5,7 @@ function Navbar(){
 
     return(
         <div className="relative sticky h-25 flex flex-row items-center bg-stone-500 text-white">
-            <img className="w-20 m-6" src="/assets/vecteezy_big-bass-fish.png" alt="Vecteezy.com" />
+            <Link to="/"><img className="w-20 m-6" src="/assets/vecteezy_big-bass-fish.png" alt="Vecteezy.com" /></Link>
             <h1 className="text-3xl font-bold text-center"><Link to="/">Fishing Nerds</Link></h1>
             <ul className="ml-100 flex flex-row justify-center text-center">
                 <li className="p-6"><Link to="/products">Products</Link></li>

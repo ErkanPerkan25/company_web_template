@@ -5,12 +5,12 @@ import SpecificProduct from "../components/SpecificProduct";
 import { useParams } from "react-router-dom";
 
 function SpecificProductPage(){
-    const {name} = useParams();
+    const params = useParams();
 
     return(
         <div>
             <Navbar />
-            <SpecificProduct name={name}/>
+            <SpecificProduct name={params.product}/>
             <Footer />
         </div>
     )

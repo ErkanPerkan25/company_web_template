@@ -1,9 +1,13 @@
 import { useState, useEffect, useCallback } from "react";
 import { apiUrl } from "../api/apiConfig";
+import { useParams } from "react-router-dom";
 
 function SpecificProduct({name}){
     const [product, setProduct] = useState();
     const [quantity, setQuantity] = useState(1);
+    const params = useParams();
+
+    console.log(params);
 
     // Handles quantity number
     const handleQuantity = (e) =>{
@@ -31,7 +35,7 @@ function SpecificProduct({name}){
 
     const getItem = useCallback(() =>{
         // Fetching product data
-        fetch(`${apiUrl}/products/${name}`)
+        fetch(`${apiUrl}/products/${params.categroy}/${params.product}`)
             .then(res =>{
                 if(!res.ok){
                     throw new Error(`Network response not ok`);
@@ -46,7 +50,7 @@ function SpecificProduct({name}){
             .catch(error =>{
                 console.log("Error: " + error);
             });
-    }, [name]);
+    }, [params,name]);
     
     useEffect(() =>{
         getItem();

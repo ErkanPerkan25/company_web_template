@@ -11,6 +11,7 @@ function HomeContent(){
                 <CategoryCard
                     title={item.title} 
                     url={item.url}
+                    type={item.type}
                     key={key}
                 />
             ))}

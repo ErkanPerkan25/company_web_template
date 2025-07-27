@@ -1,12 +1,14 @@
 import {useState} from "react"
-import {Link} from "react-router-dom"
+import {Link, useParams} from "react-router-dom"
 
 function ProductItem({name, price, url}){
+    const params = useParams();
+    console.log(params);
 
     return(
         <div className="w-80 hover:shadow-xl">
             <div className="w-70 h-60 p-2 ml-auto mr-auto">
-                <Link to={`/products/${name}`}>
+                <Link to={`/products/${params.category}/${name}`}>
                     <img 
                         className="mt-5 h-55 ml-auto mr-auto"
                         src="/assets/vecteezy_big-bass-fish.png" 
