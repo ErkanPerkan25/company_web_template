@@ -68,7 +68,7 @@ function SpecificProduct({name}){
 
     return(
         <div className="flex flex-col md:flex-row m-10 justify-center">
-            <div className="w-200 mr-30 border-2 rounded-lg p-10">
+            <div className="w-200 mr-10 border-2 rounded-lg p-10">
                 <img 
                     className="w-125 mr-auto ml-auto"
                     src="/assets/vecteezy_big-bass-fish.png" 
@@ -76,13 +76,13 @@ function SpecificProduct({name}){
                 />
             </div>
 
-            <div className="w-85 h-125 flex flex-col mt-auto mb-auto ml-20 p-4 border-2 rounded-lg">
-                <h1 className="text-4xl font-bold">{product.Name}</h1>
-                <h3 className="text-3xl ">${product.Price}</h3>
-
-                <div>
+            <div className="w-120 h-125 flex flex-col mt-auto mb-auto ml-20 p-4 border-2 rounded-lg">
+                <div className="p-5">
+                    <h1 className="text-4xl font-bold">{product.Name}</h1>
+                    <h3 className="text-3xl ">${product.Price}</h3>
                 </div>
-
+                <hr />
+                <h1 className="text-sm font-bold mt-5">Quantity: </h1>
                 <div className="m-2 ml-auto mr-auto">
                     <button 
                         onClick={handleQuantity}
@@ -107,9 +107,13 @@ function SpecificProduct({name}){
                     +
                     </button>
                 </div>
-                <button className="w-40 h-10 rounded-md ml-auto mr-auto mt-5 text-white font-bold bg-linear-to-r from-cyan-500 to-sky-600 drop-shadow-md hover:stroke-white">
-                    BUY
+                <button className="w-60 h-10 rounded-md ml-auto mr-auto mt-5 text-white font-bold bg-linear-to-r from-cyan-500 to-sky-600 drop-shadow-md hover:stroke-white">
+                    ADD TO CART
                 </button>
+                <br/>
+                <div className="mt-10">
+                    <h1 className="text-sm font-bold">Shipping & Return</h1>
+                </div>
             </div>
         </div>
     )

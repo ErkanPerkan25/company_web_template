@@ -2,7 +2,7 @@ import {useState} from "react"
 
 function HomeAbout(){
     return(
-        <div className="h-125 flex justify-center text-center bg-stone-500 text-white">
+        <div className="h-125 flex justify-center text-center bg-sky-950 text-white">
             <div className="flex flex-row w-300 p-15 align-center">
                 <img className="mr-auto ml-auto" src="assets/vecteezy_big-bass-fish.png" alt="Vecteezy.com" />
                 <div className="justify-center ml-40 mt-auto mb-auto">

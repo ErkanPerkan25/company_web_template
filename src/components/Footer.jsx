@@ -2,7 +2,7 @@ import {useState} from "react";
 
 function Footer(){
     return(
-        <footer className="px-0 py-8 sm:px-8 lg:px-8 mt-10 bg-stone-500 text-white">
+        <footer className="px-0 py-8 sm:px-8 lg:px-8 mt-10 bg-sky-950 text-white">
             <div className="py-0 px-20">
                 <div className="flex flex-col md:flex-row justify-center">
                     <div className="mr-80">

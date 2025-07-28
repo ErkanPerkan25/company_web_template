@@ -8,10 +8,17 @@ function Contact(){
             <form action="https://getform.io/f/9cd7a7fa-4a01-4677-92ab-89e2d68829ae" method="POST"
                 className="grid grid-cols-1 w-80 md:w-120 lg:w-150 pt-1">
                 <input
-                    name="name"
-                    className="w-full h-12 border-1 rounded-md mt-3 p-1"
                     type="text"
+                    name="name"
                     placeholder="Name" 
+                    className="w-full h-12 border-1 rounded-md mt-3 p-1"
+                />
+                <input
+                    type="text"
+                    name="orderNumber"
+                    placeholder="Order Number"
+                    className="w-full h-12 border-1 rounded-md mt-3 p-1"
+
                 />
                 <input
                     type="email"

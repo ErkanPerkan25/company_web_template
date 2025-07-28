@@ -3,7 +3,6 @@ import {useState} from "react"
 function VideoShow(){
     return(
         <div className="">
-            <h1></h1>
             <div className="relative">
                 <video  className="w-full h-150 brightness-50 object-cover object-center" autoPlay loop muted>
                     <source className="" src="assets/fishing_reel.mp4" type="video/mp4" />
