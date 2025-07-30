@@ -6,15 +6,15 @@ function ProductItem({name, price, url}){
     console.log(params);
 
     return(
-        <div className="w-80 hover:shadow-xl">
+        <div className="w-80 hover:shadow-xl rounded-lg">
             <div className="w-70 h-60 p-2 ml-auto mr-auto">
                 <Link to={`/products/${params.category}/${name}`}>
                     <img 
                         className="mt-5 h-55 ml-auto mr-auto"
-                        src="/assets/vecteezy_big-bass-fish.png" 
-                        alt="Vecteezy.com"
-                    />
-                </Link>
+                        src={url} 
+                        alt="lure img"
+                />
+            </Link>
             </div>
             <div className="m-5 p-3">
                 <h1 className="text-lg">{name}<br/></h1>
