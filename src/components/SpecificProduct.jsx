@@ -35,21 +35,26 @@ function SpecificProduct({name}){
 
     const getItem = useCallback(() =>{
         // Fetching product data
-        fetch(`${apiUrl}/products/${params.categroy}/${params.product}`, {mode: "cors"})
-            .then(res =>{
-                if(!res.ok){
-                    throw new Error(`Network response not ok`);
-                }
-                else{
-                    return res.json();
-                }
-            })
-            .then(data =>{
-                setProduct(data[0]);
-            })
-            .catch(error =>{
-                console.log("Error: " + error);
-            });
+        fetch(`${apiUrl}/products/${params.categroy}/${params.product}`, {
+            method: "GET",
+            headers: {
+                "Authorization": "*",
+            }
+        })
+        .then(res =>{
+            if(!res.ok){
+                throw new Error(`Network response not ok`);
+            }
+            else{
+                return res.json();
+            }
+        })
+        .then(data =>{
+            setProduct(data[0]);
+        })
+        .catch(error =>{
+            console.log(error);
+        });
     }, [params]);
     
     useEffect(() =>{
@@ -70,9 +75,9 @@ function SpecificProduct({name}){
             <div className="flex flex-col md:flex-row m-10 justify-center">
                 <div className="w-200 mr-10 border-1 rounded-lg p-10">
                     <img 
-                        className="w-125 mr-auto ml-auto"
-                        src={product.Image_url} 
-                        alt="Lure Picture" 
+                        className="w-125 mr-auto ml-auto rounded-md"
+                        src={product.Image_url || "/assets/vecteezy_big-bass-fish.png"} 
+                        alt="" 
                     />
                 </div>
 

@@ -10,9 +10,9 @@ function ProductItem({name, price, url}){
             <div className="w-70 h-60 p-2 ml-auto mr-auto">
                 <Link to={`/products/${params.category}/${name}`}>
                     <img 
-                        className="mt-5 h-55 ml-auto mr-auto"
-                        src={url} 
-                        alt="lure img"
+                        className="mt-5 h-55 ml-auto mr-auto rounded-md"
+                        src={url}
+                        alt="Product Picture"
                 />
             </Link>
             </div>
